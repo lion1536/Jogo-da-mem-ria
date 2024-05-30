@@ -1,59 +1,87 @@
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+@import url('https://fonts.googleapis.com/css2?family=Marko+One&family=Permanent+Marker&display=swap');
+* {
     margin: 0;
-    background-color: #f0f0f0;
-    font-family: Arial, sans-serif;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 200vh;
+    background-color: #e0f7fa;
+    font-family: "Marko One", serif;
+}
+
+p{
+    color: #00796b;
+    font-size: 2.5rem;
+    font-family: "Marko One", serif;
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #00796b;
+    font-size: 2.5rem;
 }
 
 .game-board {
     display: grid;
-    grid-template-columns: repeat(8, 80px);
-    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    gap: 15px;
+    width: 90vw;
+    max-width: 800px;
 }
 
 .card {
-    width: 80px;
-    height: 80px;
+    width: 100%;
+    padding-top: 100%;
+    position: relative;
+    background-color: #ffffff;
+    border: 2px solid #00796b;
+    border-radius: 10px;
+    cursor: pointer;
+    user-select: none;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #fff;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 2em;
-    user-select: none;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.card::after {
+    content: '';
+    display: block;
+    padding-top: 100%;
+}
+
+.card > span {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
 }
 
 .card.flipped {
-    background-color: #ffcc00;
+    background-color: #00796b;
+    color: #ffffff;
+    transform: rotateY(180deg);
 }
 
 @media (max-width: 1024px) {
-    .game-board {
-        grid-template-columns: repeat(6, 70px);
-        grid-gap: 8px;
-    }
-
     .card {
-        width: 70px;
-        height: 70px;
-        font-size: 1.8em;
+        font-size: 1.8rem;
     }
 }
 
 @media (max-width: 600px) {
-    .game-board {
-        grid-template-columns: repeat(4, 60px);
-        grid-gap: 5px;
-    }
-
     .card {
-        width: 60px;
-        height: 60px;
-        font-size: 1.5em;
+        font-size: 1.5rem;
     }
 }
